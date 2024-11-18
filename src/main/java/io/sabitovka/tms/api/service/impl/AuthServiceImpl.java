@@ -1,10 +1,14 @@
 package io.sabitovka.tms.api.service.impl;
 
+import io.sabitovka.tms.api.exception.ApplicationException;
 import io.sabitovka.tms.api.model.dto.LoginDto;
 import io.sabitovka.tms.api.model.dto.RegisterUserDto;
 import io.sabitovka.tms.api.model.entity.User;
+import io.sabitovka.tms.api.model.enums.ErrorCode;
 import io.sabitovka.tms.api.model.enums.UserRole;
 import io.sabitovka.tms.api.repository.UserRepository;
+import io.sabitovka.tms.api.service.AuthService;
+import io.sabitovka.tms.api.util.Constants;
 import io.sabitovka.tms.api.util.JwtTokenProvider;
 import io.sabitovka.tms.api.util.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -13,15 +17,16 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class AuthService {
+public class AuthServiceImpl implements AuthService {
     private final UserRepository userRepository;
     private final JwtTokenProvider jwtTokenProvider;
     private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
 
+    @Override
     public void register(RegisterUserDto registerUserDto) {
         if (userRepository.existsByEmail(registerUserDto.email())) {
-            throw new IllegalArgumentException();
+            throw new ApplicationException(ErrorCode.BAD_REQUEST, Constants.USER_ALREADY_EXISTS_TEXT);
         }
 
         User user = userMapper.toEntity(registerUserDto);
@@ -32,12 +37,13 @@ public class AuthService {
         userRepository.save(user);
     }
 
+    @Override
     public String login(LoginDto loginDto) {
         User user = userRepository.findByEmail(loginDto.username())
-                .orElseThrow(() -> new IllegalArgumentException("User Not Found"));
+                .orElseThrow(() -> new ApplicationException(ErrorCode.UNAUTHORIZED, Constants.LOGIN_OR_PASSWORD_INCORRECT_TEXT));
 
         if (!passwordEncoder.matches(loginDto.password(), user.getPassword())) {
-            throw new IllegalArgumentException("Password incorrect");
+            throw new ApplicationException(ErrorCode.UNAUTHORIZED, Constants.LOGIN_OR_PASSWORD_INCORRECT_TEXT);
         }
 
         return jwtTokenProvider.createToken(user.getEmail());

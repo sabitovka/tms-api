@@ -5,10 +5,14 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
+import com.auth0.jwt.interfaces.Payload;
+import io.sabitovka.tms.api.exception.ApplicationException;
+import io.sabitovka.tms.api.model.enums.ErrorCode;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.Optional;
 import java.util.UUID;
 
 @Component
@@ -32,16 +36,17 @@ public class JwtTokenProvider {
                 .sign(algorithm);
     }
 
-    public DecodedJWT decodeToken(String token) {
+    public Optional<DecodedJWT> decodeToken(String token) {
         try {
             JWTVerifier verifier = JWT.require(algorithm).build();
-            return verifier.verify(token);
+            return Optional.of(verifier.verify(token));
         } catch (JWTVerificationException e) {
-            throw new RuntimeException(e.getMessage());
+            return Optional.empty();
         }
     }
 
     public String getUsernameFromToken(String token) {
-        return decodeToken(token).getSubject();
+        return decodeToken(token).map(Payload::getSubject)
+                .orElse(null);
     }
 }
