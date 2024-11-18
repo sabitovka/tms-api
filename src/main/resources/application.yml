@@ -11,3 +11,8 @@ spring:
     default-schema: model
     liquibase-schema: public
     change-log: classpath:db/changelog/changelog.xml
+
+security:
+  jwt:
+    secret: dGFzay1tZ3Qtc3lzdGVt
+    expirationMinutes: 5

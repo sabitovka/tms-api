@@ -8,7 +8,6 @@
     <changeSet id="003-create-tasks-table" author="sabitovka">
         <sql>create type status as enum('WAITING', 'IN_WORK', 'DONE');</sql>
         <sql>create type priority as enum('LOW', 'MEDIUM', 'HIGH');</sql>
-
         <createTable tableName="tasks">
             <column name="id" type="bigint" defaultValueSequenceNext="tasks_id_sequence">
                 <constraints primaryKey="true" primaryKeyName="pk_tasks_id"/>
@@ -19,10 +18,10 @@
             <column name="description" type="text">
                 <constraints nullable="false" />
             </column>
-            <column name="status" type="varchar" defaultValue="WAITING">
+            <column name="status" type="status" defaultValue="WAITING">
                 <constraints nullable="false" />
             </column>
-            <column name="priority" type="varchar" defaultValue="LOW">
+            <column name="priority" type="priority" defaultValue="LOW">
                 <constraints nullable="false" />
             </column>
             <column name="author_id" type="bigint">

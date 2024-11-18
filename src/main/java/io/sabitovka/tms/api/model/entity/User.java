@@ -1,9 +1,14 @@
 package io.sabitovka.tms.api.model.entity;
 
+import io.sabitovka.tms.api.model.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcType;
+import org.hibernate.annotations.Type;
+import org.hibernate.dialect.PostgreSQLEnumJdbcType;
 import org.hibernate.proxy.HibernateProxy;
+import org.hibernate.type.descriptor.jdbc.EnumJdbcType;
 
 import java.util.Objects;
 
@@ -18,6 +23,11 @@ public class User {
     private String username;
     private String email;
     private String password;
+
+    @Column(name = "user_role")
+    @Enumerated(EnumType.STRING)
+    @JdbcType(PostgreSQLEnumJdbcType.class)
+    private UserRole role;
 
     @Override
     public final boolean equals(Object o) {

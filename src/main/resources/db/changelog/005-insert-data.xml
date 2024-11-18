@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="005-insert-data" author="sabitovka">
+        <insert tableName="users">
+            <column name="email">admin@tms.io</column>
+            <column name="username">admin</column>
+            <column name="password">$2a$10$3J8S0ENxLumOQVxrXMYhl.sfbabM783hACeAkXWluhRaF2hDL6SEq</column>
+            <column name="user_role">ADMIN</column>
+        </insert>
+
+        <insert tableName="users">
+            <column name="email">user@tms.io</column>
+            <column name="username">user</column>
+            <column name="password">$2a$10$nIB5auw76Q6U9GaMKZS5cebAjRNqx.i5eymM6Oi785VKEt7W2O0Ee</column>
+            <column name="user_role">USER</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
