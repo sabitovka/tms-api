@@ -12,6 +12,7 @@ public enum ErrorCode {
     BAD_REQUEST(200, "Ошибка запроса", HttpStatus.BAD_REQUEST),
     UNAUTHORIZED(300, "Ошибка авторизации", HttpStatus.UNAUTHORIZED),
     FORBIDDEN(400, "Нет доступа", HttpStatus.FORBIDDEN),
+    CONFLICT(500, "Конфликт запроса и сервера", HttpStatus.CONFLICT),
     INTERNAL_ERROR(900, "Неизвестная внутренняя ошибка", HttpStatus.INTERNAL_SERVER_ERROR);
 
     private final int id;

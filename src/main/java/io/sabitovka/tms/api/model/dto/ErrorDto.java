@@ -3,7 +3,6 @@ package io.sabitovka.tms.api.model.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
 
@@ -14,7 +13,7 @@ import java.time.LocalDateTime;
 @Setter
 public class ErrorDto {
     private int internalCode;
-    private HttpStatus status;
+    private int status;
     private String error;
     private String message;
     private boolean success = false;

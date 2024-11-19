@@ -1,4 +1,4 @@
-package io.sabitovka.tms.api.service.impl;
+package io.sabitovka.tms.api.auth;
 
 import io.sabitovka.tms.api.exception.ApplicationException;
 import io.sabitovka.tms.api.model.entity.User;
@@ -22,12 +22,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new ApplicationException(ErrorCode.UNAUTHORIZED, Constants.TOKEN_IS_VALID_BUT_USER_NOT_FOUND_TEXT));
+                .orElseThrow(() -> new ApplicationException(ErrorCode.CONFLICT, Constants.TOKEN_IS_VALID_BUT_USER_NOT_FOUND_TEXT));
 
-        return org.springframework.security.core.userdetails.User.builder()
-                .username(user.getEmail())
-                .password(user.getPassword())
-                .authorities(user.getRole().toString())
-                .build();
+        return new CustomUserDetails(user.getEmail(), user.getPassword(), user.getId(), user.getRole().toString());
     }
 }

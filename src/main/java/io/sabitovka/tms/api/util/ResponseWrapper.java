@@ -6,12 +6,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class ResponseWrapper<T> {
     private final T data;
     private HttpStatus status = HttpStatus.OK;
 
-    public static ResponseWrapper<Void> wrap() {
+    public static ResponseWrapper<Void> noContent() {
         return wrap(null);
     }
 

@@ -1,5 +1,6 @@
 package io.sabitovka.tms.api.service.impl;
 
+import io.sabitovka.tms.api.auth.CustomUserDetails;
 import io.sabitovka.tms.api.exception.ApplicationException;
 import io.sabitovka.tms.api.model.dto.LoginDto;
 import io.sabitovka.tms.api.model.dto.RegisterUserDto;
@@ -12,6 +13,7 @@ import io.sabitovka.tms.api.util.Constants;
 import io.sabitovka.tms.api.util.JwtTokenProvider;
 import io.sabitovka.tms.api.util.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -47,5 +49,16 @@ public class AuthServiceImpl implements AuthService {
         }
 
         return jwtTokenProvider.createToken(user.getEmail());
+    }
+
+    @Override
+    public CustomUserDetails getCurrentUser() {
+        return (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
+
+    @Override
+    public boolean hasAuthority(UserRole userRole) {
+        return getCurrentUser().getAuthorities().stream()
+                .anyMatch(authority -> authority.getAuthority().equals(userRole.toString()));
     }
 }

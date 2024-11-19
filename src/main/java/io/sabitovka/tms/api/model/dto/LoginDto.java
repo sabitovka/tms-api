@@ -1,3 +1,8 @@
 package io.sabitovka.tms.api.model.dto;
 
-public record LoginDto(String username, String password) {}
+import jakarta.validation.constraints.NotBlank;
+
+public record LoginDto(
+        @NotBlank String username,
+        @NotBlank String password
+) {}

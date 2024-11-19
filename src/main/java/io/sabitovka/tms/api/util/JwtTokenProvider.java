@@ -9,6 +9,7 @@ import com.auth0.jwt.interfaces.Payload;
 import io.sabitovka.tms.api.exception.ApplicationException;
 import io.sabitovka.tms.api.model.enums.ErrorCode;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.CredentialsExpiredException;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -36,17 +37,16 @@ public class JwtTokenProvider {
                 .sign(algorithm);
     }
 
-    public Optional<DecodedJWT> decodeToken(String token) {
+    public DecodedJWT decodeToken(String token) {
         try {
             JWTVerifier verifier = JWT.require(algorithm).build();
-            return Optional.of(verifier.verify(token));
+            return verifier.verify(token);
         } catch (JWTVerificationException e) {
-            return Optional.empty();
+            throw new ApplicationException(ErrorCode.UNAUTHORIZED, e);
         }
     }
 
     public String getUsernameFromToken(String token) {
-        return decodeToken(token).map(Payload::getSubject)
-                .orElse(null);
+        return decodeToken(token).getSubject();
     }
 }

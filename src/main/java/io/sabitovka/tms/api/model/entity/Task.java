@@ -20,18 +20,26 @@ public class Task {
     private String title;
     private String description;
 
+    @Column(name = "author_id")
+    private Long authorId;
+
+    @Column(name = "performer_id")
+    private Long performerId;
+
     @Enumerated(EnumType.STRING)
     private TaskStatus status;
 
     @Enumerated(EnumType.STRING)
     private TaskPriority priority;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
+    @MapsId("authorId")
     private User author;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "performer_id")
+    @MapsId("performerId")
     private User performer;
 
     @Override
