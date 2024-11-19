@@ -24,6 +24,5 @@ public record UserInfoDto(
         @Email
         @NotEmpty
         @NotBlank
-        String email,
-        boolean isAdmin
+        String email
 ) implements Serializable {}

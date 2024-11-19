@@ -5,15 +5,13 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
-import com.auth0.jwt.interfaces.Payload;
 import io.sabitovka.tms.api.exception.ApplicationException;
 import io.sabitovka.tms.api.model.enums.ErrorCode;
+import io.sabitovka.tms.api.model.enums.UserRole;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.CredentialsExpiredException;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
-import java.util.Optional;
 import java.util.UUID;
 
 @Component
@@ -26,10 +24,12 @@ public class JwtTokenProvider {
         this.expirationTime = expirationTime * 60 * 1000;
     }
 
-    public String createToken(String username) {
+    public String createToken(String username, Long userId, String role) {
         return JWT.create()
                 .withIssuer("Task Management System API")
                 .withSubject(username)
+                .withClaim("userId", userId)
+                .withClaim("role", role)
                 .withIssuedAt(new Date())
                 .withExpiresAt(new Date(System.currentTimeMillis() + expirationTime))
                 .withJWTId(UUID.randomUUID()

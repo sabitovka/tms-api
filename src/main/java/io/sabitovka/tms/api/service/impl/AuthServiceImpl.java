@@ -48,7 +48,7 @@ public class AuthServiceImpl implements AuthService {
             throw new ApplicationException(ErrorCode.UNAUTHORIZED, Constants.LOGIN_OR_PASSWORD_INCORRECT_TEXT);
         }
 
-        return jwtTokenProvider.createToken(user.getEmail());
+        return jwtTokenProvider.createToken(user.getEmail(), user.getId(), user.getRole().toString());
     }
 
     @Override
