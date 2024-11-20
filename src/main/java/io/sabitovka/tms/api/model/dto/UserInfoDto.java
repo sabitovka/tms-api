@@ -1,11 +1,10 @@
 package io.sabitovka.tms.api.model.dto;
 
+import io.sabitovka.tms.api.model.entity.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-
-import io.sabitovka.tms.api.model.entity.User;
 
 import java.io.Serializable;
 

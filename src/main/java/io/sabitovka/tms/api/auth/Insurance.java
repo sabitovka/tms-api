@@ -1,6 +1,5 @@
 package io.sabitovka.tms.api.auth;
 
-import io.sabitovka.tms.api.auth.CustomUserDetails;
 import io.sabitovka.tms.api.exception.ApplicationException;
 import io.sabitovka.tms.api.model.entity.Task;
 import io.sabitovka.tms.api.model.enums.ErrorCode;
@@ -8,7 +7,6 @@ import io.sabitovka.tms.api.model.enums.UserRole;
 import io.sabitovka.tms.api.service.AuthService;
 import io.sabitovka.tms.api.util.Constants;
 import lombok.RequiredArgsConstructor;
-import lombok.experimental.UtilityClass;
 import org.springframework.stereotype.Component;
 
 @Component

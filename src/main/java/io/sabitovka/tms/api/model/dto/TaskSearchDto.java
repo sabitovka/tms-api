@@ -11,6 +11,6 @@ public class TaskSearchDto extends PagingAndSortingDto {
     private String title; // Фильтр по названию задачи
     private TaskStatus status; // Фильтр по статусу задачи
     private TaskPriority priority; // Фильтр по приоритету задачи
-    private String authorId;
-    private String performerId;
+    private Long authorId;
+    private Long performerId;
 }

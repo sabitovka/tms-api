@@ -7,7 +7,6 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
 import io.sabitovka.tms.api.exception.ApplicationException;
 import io.sabitovka.tms.api.model.enums.ErrorCode;
-import io.sabitovka.tms.api.model.enums.UserRole;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

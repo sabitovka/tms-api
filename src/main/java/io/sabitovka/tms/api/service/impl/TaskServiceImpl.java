@@ -1,5 +1,6 @@
 package io.sabitovka.tms.api.service.impl;
 
+import io.sabitovka.tms.api.auth.Insurance;
 import io.sabitovka.tms.api.exception.ApplicationException;
 import io.sabitovka.tms.api.model.dto.StatusDto;
 import io.sabitovka.tms.api.model.dto.TaskDto;
@@ -11,7 +12,6 @@ import io.sabitovka.tms.api.repository.UserRepository;
 import io.sabitovka.tms.api.service.TaskService;
 import io.sabitovka.tms.api.specification.TaskSpecification;
 import io.sabitovka.tms.api.util.Constants;
-import io.sabitovka.tms.api.auth.Insurance;
 import io.sabitovka.tms.api.util.mapper.TaskMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

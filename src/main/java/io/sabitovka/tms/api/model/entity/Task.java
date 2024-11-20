@@ -3,10 +3,12 @@ package io.sabitovka.tms.api.model.entity;
 import io.sabitovka.tms.api.model.enums.TaskPriority;
 import io.sabitovka.tms.api.model.enums.TaskStatus;
 import jakarta.persistence.*;
-import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.JdbcType;
 import org.hibernate.dialect.PostgreSQLEnumJdbcType;
 import org.hibernate.proxy.HibernateProxy;
 

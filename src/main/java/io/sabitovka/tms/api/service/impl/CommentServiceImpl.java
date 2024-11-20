@@ -1,15 +1,15 @@
 package io.sabitovka.tms.api.service.impl;
 
+import io.sabitovka.tms.api.auth.Insurance;
 import io.sabitovka.tms.api.exception.ApplicationException;
-import io.sabitovka.tms.api.model.entity.Comment;
 import io.sabitovka.tms.api.model.dto.CommentDto;
+import io.sabitovka.tms.api.model.entity.Comment;
 import io.sabitovka.tms.api.model.entity.Task;
 import io.sabitovka.tms.api.model.enums.ErrorCode;
 import io.sabitovka.tms.api.repository.CommentRepository;
 import io.sabitovka.tms.api.repository.TaskRepository;
 import io.sabitovka.tms.api.service.CommentService;
 import io.sabitovka.tms.api.util.Constants;
-import io.sabitovka.tms.api.auth.Insurance;
 import io.sabitovka.tms.api.util.mapper.CommentMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

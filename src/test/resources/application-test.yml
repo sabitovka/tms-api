@@ -1,12 +1,6 @@
 spring:
   datasource:
-    username: tms-app
-    password: password
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5433/tms?currentSchema=model
-  jpa:
-    hibernate:
-      ddl-auto: validate
   liquibase:
     default-schema: model
     liquibase-schema: public
@@ -14,5 +8,13 @@ spring:
 
 security:
   jwt:
-    secret: dGFzay1tZ3Qtc3lzdGVt
+    secret: test
     expirationMinutes: 5
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+        web:
+          FilterChainProxy: DEBUG

@@ -9,8 +9,10 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -28,10 +30,5 @@ public class AuthController {
     public ResponseEntity<SuccessDto<String>> login(@Valid @RequestBody LoginDto loginDto) {
         String token = authService.login(loginDto);
         return ResponseWrapper.wrap(token).toResponse();
-    }
-
-    @GetMapping("/me")
-    public ResponseEntity<String> me() {
-        return ResponseEntity.ok(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
     }
 }

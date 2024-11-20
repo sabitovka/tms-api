@@ -1,6 +1,5 @@
 package io.sabitovka.tms.api.model.dto;
 
-import io.sabitovka.tms.api.model.dto.UserInfoDto;
 import io.sabitovka.tms.api.model.entity.Comment;
 
 import java.io.Serializable;

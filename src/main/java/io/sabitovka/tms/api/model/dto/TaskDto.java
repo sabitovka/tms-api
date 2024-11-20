@@ -1,6 +1,5 @@
 package io.sabitovka.tms.api.model.dto;
 
-import io.sabitovka.tms.api.model.dto.UserInfoDto;
 import io.sabitovka.tms.api.model.entity.Task;
 import io.sabitovka.tms.api.model.enums.TaskPriority;
 import io.sabitovka.tms.api.model.enums.TaskStatus;
@@ -24,4 +23,5 @@ public record TaskDto(
         @NotNull
         UserInfoDto author,
         @NotNull
-        UserInfoDto performer) implements Serializable {}
+        UserInfoDto performer
+) implements Serializable {}

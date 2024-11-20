@@ -1,7 +1,7 @@
 package io.sabitovka.tms.api.util.mapper;
 
-import io.sabitovka.tms.api.model.entity.Comment;
 import io.sabitovka.tms.api.model.dto.CommentDto;
+import io.sabitovka.tms.api.model.entity.Comment;
 import org.mapstruct.*;
 import org.springframework.stereotype.Component;
 

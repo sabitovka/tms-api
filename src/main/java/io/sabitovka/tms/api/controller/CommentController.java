@@ -1,7 +1,7 @@
 package io.sabitovka.tms.api.controller;
 
-import io.sabitovka.tms.api.model.dto.SuccessDto;
 import io.sabitovka.tms.api.model.dto.CommentDto;
+import io.sabitovka.tms.api.model.dto.SuccessDto;
 import io.sabitovka.tms.api.service.CommentService;
 import io.sabitovka.tms.api.util.Constants;
 import io.sabitovka.tms.api.util.ResponseWrapper;
