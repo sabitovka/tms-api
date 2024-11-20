@@ -1,5 +1,7 @@
 package io.sabitovka.tms.api.model.dto;
 
+import io.sabitovka.tms.api.model.enums.TaskPriority;
+import io.sabitovka.tms.api.model.enums.TaskStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,8 +9,8 @@ import lombok.Setter;
 @Setter
 public class TaskSearchDto extends PagingAndSortingDto {
     private String title; // Фильтр по названию задачи
-    private String status; // Фильтр по статусу задачи
-    private String priority; // Фильтр по приоритету задачи
-    private String assignee; // Фильтр по имени исполнителя
-    private String author; // Фильтр по имени автора
+    private TaskStatus status; // Фильтр по статусу задачи
+    private TaskPriority priority; // Фильтр по приоритету задачи
+    private String authorId;
+    private String performerId;
 }

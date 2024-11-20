@@ -10,4 +10,5 @@ public class Constants {
     public static final String TASK_WITH_THE_ID_NOT_FOUND_TEXT_F = "Задача с id = %s не найдена";
     public static final String ACCESS_DENIED_TO_THE_TASK = "У вас нет доступа к этой задаче";
     public static final String BEARER_AUTHORIZATION = "Bearer";
+    public static final String USER_WITH_THE_ID_NOT_FOUND_TEXT_F = "Пользователь с id = %d не найден";
 }

@@ -15,4 +15,6 @@ public interface TaskService {
     void updateById(Long id, TaskDto taskDto);
 
     void changeStatus(Long id, StatusDto statusDto);
+
+    void findAllCommentsByTaskId(Long id);
 }

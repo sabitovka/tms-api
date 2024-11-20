@@ -31,17 +31,15 @@ public class TaskSpecification implements EntitySpecification<TaskSearchDto, Tas
                 predicates.add(criteriaBuilder.equal(root.get("priority"), searchDto.getPriority()));
             }
 
-            if (searchDto.getAssignee() != null) {
+            if (searchDto.getPerformerId() != null) {
                 predicates.add(
-                        criteriaBuilder.like(criteriaBuilder.lower(root.get("assignee").get("username")),
-                        "%" + searchDto.getAssignee().toLowerCase() + "%"
+                        criteriaBuilder.equal(root.get("performerId"), searchDto.getPerformerId()
                 ));
             }
 
-            if (searchDto.getAuthor() != null) {
-                predicates.add(criteriaBuilder.like(
-                        criteriaBuilder.lower(root.get("author").get("username")),
-                        "%" + searchDto.getAuthor().toLowerCase() + "%"
+            if (searchDto.getAuthorId() != null) {
+                predicates.add(
+                        criteriaBuilder.equal(root.get("authorId"), searchDto.getAuthorId()
                 ));
             }
 

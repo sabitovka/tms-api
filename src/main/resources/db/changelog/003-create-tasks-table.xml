@@ -15,15 +15,9 @@
             <column name="title" type="varchar(100)">
                 <constraints nullable="false" />
             </column>
-            <column name="description" type="text">
-                <constraints nullable="false" />
-            </column>
-            <column name="status" type="status" defaultValue="WAITING">
-                <constraints nullable="false" />
-            </column>
-            <column name="priority" type="priority" defaultValue="LOW">
-                <constraints nullable="false" />
-            </column>
+            <column name="description" type="text" />
+            <column name="status" type="status" defaultValue="WAITING" defaultOnNull="true" />
+            <column name="priority" type="priority" defaultValue="LOW" defaultOnNull="true"/>
             <column name="author_id" type="bigint">
                 <constraints references="users(id)" deleteCascade="true" foreignKeyName="fk_tasks_author_id_users_id" nullable="false"/>
             </column>

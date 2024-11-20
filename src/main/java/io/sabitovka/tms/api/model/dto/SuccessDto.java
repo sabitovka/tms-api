@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Getter
 public class SuccessDto<T> {
-    private final HttpStatus status;
+    private final int status;
     private final T data;
     private final boolean success = true;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -19,7 +19,7 @@ public class SuccessDto<T> {
     }
 
     public SuccessDto(HttpStatus status, T data) {
-        this.status = status;
+        this.status = status.value();
         this.data = data;
     }
 }

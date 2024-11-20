@@ -3,8 +3,11 @@ package io.sabitovka.tms.api.model.entity;
 import io.sabitovka.tms.api.model.enums.TaskPriority;
 import io.sabitovka.tms.api.model.enums.TaskStatus;
 import jakarta.persistence.*;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.*;
+import org.hibernate.dialect.PostgreSQLEnumJdbcType;
 import org.hibernate.proxy.HibernateProxy;
 
 import java.util.Objects;
@@ -13,6 +16,8 @@ import java.util.Objects;
 @Setter
 @Entity
 @Table(name = "tasks")
+@DynamicInsert
+@DynamicUpdate
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,9 +32,13 @@ public class Task {
     private Long performerId;
 
     @Enumerated(EnumType.STRING)
+    @JdbcType(PostgreSQLEnumJdbcType.class)
+    @ColumnDefault("default")
     private TaskStatus status;
 
     @Enumerated(EnumType.STRING)
+    @JdbcType(PostgreSQLEnumJdbcType.class)
+    @ColumnDefault("default")
     private TaskPriority priority;
 
     @ManyToOne(fetch = FetchType.LAZY)

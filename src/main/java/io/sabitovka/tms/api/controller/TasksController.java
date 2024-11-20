@@ -2,10 +2,12 @@ package io.sabitovka.tms.api.controller;
 
 import io.sabitovka.tms.api.model.dto.StatusDto;
 import io.sabitovka.tms.api.model.dto.SuccessDto;
-import io.sabitovka.tms.api.model.dto.TaskSearchDto;
 import io.sabitovka.tms.api.model.dto.TaskDto;
-import io.sabitovka.tms.api.service.impl.TaskServiceImpl;
+import io.sabitovka.tms.api.model.dto.TaskSearchDto;
+import io.sabitovka.tms.api.service.TaskService;
+import io.sabitovka.tms.api.util.Constants;
 import io.sabitovka.tms.api.util.ResponseWrapper;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -16,8 +18,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/tasks")
 @RequiredArgsConstructor
+@SecurityRequirement(name = Constants.BEARER_AUTHORIZATION)
 public class TasksController {
-    private final TaskServiceImpl taskService;
+    private final TaskService taskService;
 
     @GetMapping
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -33,28 +36,28 @@ public class TasksController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<SuccessDto<TaskDto>> create(@RequestBody TaskDto taskDto) {
         TaskDto created = taskService.create(taskDto);
         return ResponseWrapper.wrap(created).withStatus(HttpStatus.CREATED).toResponse();
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<SuccessDto<Void>> deleteById(@PathVariable("id") Long id) {
         taskService.deleteById(id);
         return ResponseWrapper.noContent().withStatus(HttpStatus.NO_CONTENT).toResponse();
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<SuccessDto<Void>> update(@PathVariable("id") Long id, @RequestBody TaskDto taskDto) {
         taskService.updateById(id, taskDto);
         return ResponseWrapper.noContent().withStatus(HttpStatus.NO_CONTENT).toResponse();
     }
 
     @PatchMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<SuccessDto<Void>> partialUpdate(@PathVariable("id") Long id, @RequestBody TaskDto taskDto) {
         taskService.updateById(id, taskDto);
         return ResponseWrapper.noContent().withStatus(HttpStatus.NO_CONTENT).toResponse();

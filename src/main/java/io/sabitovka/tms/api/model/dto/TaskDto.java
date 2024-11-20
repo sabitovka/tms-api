@@ -12,7 +12,16 @@ import java.io.Serializable;
 /**
  * DTO for {@link Task}
  */
-public record TaskDto(Long id, @NotBlank String title, String description, TaskStatus status,
-                            TaskPriority priority, @NotNull UserInfoDto author,
-                            @NotNull UserInfoDto performer) implements Serializable {
-}
+public record TaskDto(
+        Long id,
+        @NotBlank
+        String title,
+        String description,
+        TaskStatus status,
+        TaskPriority priority,
+        Long authorId,
+        Long performerId,
+        @NotNull
+        UserInfoDto author,
+        @NotNull
+        UserInfoDto performer) implements Serializable {}

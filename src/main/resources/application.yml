@@ -15,4 +15,4 @@ spring:
 security:
   jwt:
     secret: dGFzay1tZ3Qtc3lzdGVt
-    expirationMinutes: 15
+    expirationMinutes: 40

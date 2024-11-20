@@ -7,7 +7,7 @@
     <changeSet id="004-create-comments-table" author="sabitovka">
 
         <createTable tableName="comments">
-            <column name="id" type="bigint">
+            <column name="id" type="bigint" defaultValueSequenceNext="comments_id_sequence">
                 <constraints primaryKey="true" primaryKeyName="pk_comments"/>
             </column>
             <column name="text" type="text">
