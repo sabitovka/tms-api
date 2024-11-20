@@ -17,6 +17,10 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+/**
+ * Компонент предоставляет точку входа для обработки ошибок авторизации.
+ * Позволяет обернуть ошибки авторизации в {@link ErrorDto} и вывести конкретные ошибки исключений
+ */
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {

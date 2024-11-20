@@ -16,6 +16,11 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+/**
+ * Фильтр, проверяющий авторизацию в системе.
+ * Если токен не указан в заголовке Authorization, то фильтр пропускает выполнение.
+ * Если указан, то верифицируется и запрашивается пользователь из токена.
+ */
 @Component
 @RequiredArgsConstructor
 public class JwtAuthFilter extends OncePerRequestFilter {

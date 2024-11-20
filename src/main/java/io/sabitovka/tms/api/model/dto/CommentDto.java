@@ -5,7 +5,7 @@ import io.sabitovka.tms.api.model.entity.Comment;
 import java.io.Serializable;
 
 /**
- * DTO for {@link Comment}
+ * DTO для {@link Comment}
  */
 public record CommentDto(
         Long id,

@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Реализация спецификации {@link EntitySpecification} для поиска задач
+ */
 @Component
 public class TaskSpecification implements EntitySpecification<TaskSearchDto, Task> {
     @Override

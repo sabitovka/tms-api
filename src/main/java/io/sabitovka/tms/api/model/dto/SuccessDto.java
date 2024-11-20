@@ -6,6 +6,9 @@ import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
 
+/**
+ * DTO успешного ответа, позволяющего обернуть результат
+ */
 @Getter
 public class SuccessDto<T> {
     private final int status;

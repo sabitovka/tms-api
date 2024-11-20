@@ -13,7 +13,14 @@
         </insert>
 
         <insert tableName="users">
-            <column name="email">user@tms.io</column>
+            <column name="email">user1@tms.io</column>
+            <column name="username">user</column>
+            <column name="password">$2a$10$nIB5auw76Q6U9GaMKZS5cebAjRNqx.i5eymM6Oi785VKEt7W2O0Ee</column>
+            <column name="user_role">USER</column>
+        </insert>
+
+        <insert tableName="users">
+            <column name="email">user2@tms.io</column>
             <column name="username">user</column>
             <column name="password">$2a$10$nIB5auw76Q6U9GaMKZS5cebAjRNqx.i5eymM6Oi785VKEt7W2O0Ee</column>
             <column name="user_role">USER</column>

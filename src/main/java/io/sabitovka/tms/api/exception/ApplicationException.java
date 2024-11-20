@@ -3,6 +3,9 @@ package io.sabitovka.tms.api.exception;
 import io.sabitovka.tms.api.model.enums.ErrorCode;
 import lombok.Getter;
 
+/**
+ * Класс общего исключения для проекта
+ */
 @Getter
 public class ApplicationException extends RuntimeException {
     private final ErrorCode errorCode;

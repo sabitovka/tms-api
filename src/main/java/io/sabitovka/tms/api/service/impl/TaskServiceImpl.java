@@ -91,13 +91,6 @@ public class TaskServiceImpl implements TaskService {
         taskRepository.save(task);
     }
 
-    @Override
-    public void findAllCommentsByTaskId(Long id) {
-        Task task = taskRepository.findById(id)
-                .orElseThrow(() -> new ApplicationException(ErrorCode.NOT_FOUND, Constants.TASK_WITH_THE_ID_NOT_FOUND_TEXT_F.formatted(id)));
-        insurance.ensureHasAccessToTheTask(task);
-    }
-
     private void ensureUserExistsById(Long id) {
         if (!userRepository.existsById(id)) {
             throw new ApplicationException(ErrorCode.BAD_REQUEST, Constants.USER_WITH_THE_ID_NOT_FOUND_TEXT_F

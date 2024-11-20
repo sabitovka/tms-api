@@ -6,6 +6,10 @@ import org.springframework.security.core.userdetails.User;
 
 import java.util.Collections;
 
+/**
+ * Кастомная информация о пользователе для авторизации.
+ * Содержит userId для того, чтобы было проще обращаться к сущностям
+ */
 public class CustomUserDetails extends User {
     @Getter
     private final Long userId;
