@@ -4,6 +4,11 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 
+/**
+ * Перечисление всех кодов, которое может выдать приложение
+ * Каждая ошибка связана по своему смыслу по ID. Так, например все ошибки об
+ * отсутствии чего-либо (код 404) имеют ID 101, 102, ... N
+ */
 @Getter
 @RequiredArgsConstructor
 public enum ErrorCode {

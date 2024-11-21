@@ -5,7 +5,6 @@ import io.sabitovka.tms.api.model.enums.TaskStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.JdbcType;
@@ -14,6 +13,9 @@ import org.hibernate.proxy.HibernateProxy;
 
 import java.util.Objects;
 
+/**
+ * Сущность Задача
+ */
 @Getter
 @Setter
 @Entity
@@ -35,12 +37,10 @@ public class Task {
 
     @Enumerated(EnumType.STRING)
     @JdbcType(PostgreSQLEnumJdbcType.class)
-    @ColumnDefault("default")
     private TaskStatus status;
 
     @Enumerated(EnumType.STRING)
     @JdbcType(PostgreSQLEnumJdbcType.class)
-    @ColumnDefault("default")
     private TaskPriority priority;
 
     @ManyToOne(fetch = FetchType.LAZY)

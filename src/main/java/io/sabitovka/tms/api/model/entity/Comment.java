@@ -8,6 +8,9 @@ import org.hibernate.proxy.HibernateProxy;
 
 import java.util.Objects;
 
+/**
+ * Сущность Комментарий
+ */
 @Getter
 @Setter
 @Entity

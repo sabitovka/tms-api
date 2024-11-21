@@ -10,6 +10,9 @@ import org.hibernate.proxy.HibernateProxy;
 
 import java.util.Objects;
 
+/**
+ * Сущность Пользователь
+ */
 @Entity
 @Table(name = "users")
 @Getter
